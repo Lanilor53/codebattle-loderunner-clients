@@ -15,8 +15,8 @@ import static java.lang.String.format;
 public abstract class LoderunnerBase extends WebSocketClient {
     private final String responsePrefix = "board=";
 
-    public LoderunnerBase(String serverAddress, String user, String code) throws URISyntaxException {
-        super(new URI(format("ws://%s/codenjoy-contest/ws?user=%s&code=%s", serverAddress, user, code)));
+    public LoderunnerBase(String url) throws URISyntaxException {
+        super(new URI(url.replace("http", "ws").replace("board/player/", "ws?user=").replace("?code=", "&code=")));
     }
 
     @Setter
